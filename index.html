@@ -1,22 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz Aniversário - Hello Kitty</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <main class="container">
-        <h1>🎀 Feliz Aniversário! 🎀</h1>
-       <div class="block">
-         <img src="Imagem do WhatsApp de 2025-08-06 à(s) 21.54.50_1e89f7d1.jpg" alt="Hello Kitty" class="kitty-img">
-        <div class="mensagem">
-            <p>Que seu dia seja tão fofo e especial quanto a Hello Kitty!</p>
-            <p>Muita alegria, amor, saúde e sonhos realizados!</p>
-            <p>Parabéns e muitas felicidades! 🥳</p>
-        </div>
-       </div>
+        <h1>🎀 Feliz Aniversário, minha gatinha! 🎀</h1>
+        <div class="block">
+            <img src="assets/Imagem do WhatsApp de 2025-08-06 à(s) 21.54.50_1e89f7d1.jpg" alt="Hello Kitty"
+                class="kitty-img">
+            <div class="carta-container" id="carta">
+                <div class="carta">
+                    <div class="carta-front">
+                        <h2>Clique aqui</h2>
+                        <div class="papel">
+                            💖 Feliz Aniversário, minha princesa! 💖<br>
+                            Você é a luz que ilumina meus dias.<br>
+                            Amo você mais que tudo! 🎀🎂
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <img src="assets/Desenho_De_Animais_Coloridos-removebg-preview.png" alt="Hello Kitty" class="kitty-canto">
+
+            <!-- Balões -->
+            <div class="balao rosa"></div>
+<div class="balao branco"></div>
+<div class="balao lilas"></div>
+<div class="balao rosa" style="left:10%;animation-delay:1s;"></div>
+<div class="balao branco" style="left:35%;animation-delay:2.5s;"></div>
+<div class="balao lilas" style="left:65%;animation-delay:3.5s;"></div>
+<div class="balao rosa" style="left:85%;animation-delay:5s;"></div>
+
+
+
     </main>
+
+    <script>
+
+        const carta = document.getElementById('carta');
+        carta.addEventListener('click', () => {
+            carta.classList.toggle('aberta');
+        });
+
+    </script>
+
 </body>
+
 </html>
