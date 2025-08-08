@@ -1,89 +1,239 @@
+/* ======= Reset & Base ======= */
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #ffe6f2 0%, #fff 100%);
     font-family: 'Comic Sans MS', 'Comic Sans', cursive, Arial, sans-serif;
     min-height: 100vh;
+    background-color: #ffe6f2;
 }
 
+/* ======= Containers ======= */
 .container {
-    width: 90%;
-    margin: 40px auto;
-    background: #fff0fa;
-    border-radius: 20px;
-    box-shadow: 0 4px 16px rgba(255, 182, 193, 0.2);
-    padding: 32px 20px;
+    width: 100vw;
+    height: 100vh; /* ocupa exatamente a tela */
+    background-color: #ffe6f2;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly; /* distribui espaço igualmente */
     align-items: center;
     text-align: center;
+    padding: 0; /* removendo excesso de padding */
 }
-.block{
+
+.block {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 5%;
 }
 
+/* ======= Títulos ======= */
 h1 {
     color: #e75480;
-    font-size: 2.2em;
+    font-size: 3.2em;
     margin-bottom: 20px;
     font-family: 'Comic Sans MS', 'Comic Sans', cursive;
 }
+h2 {
+    color: #d6336c;
+    font-size: 2.4em;
+    margin-bottom: 16px;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+}
 
+/* ======= Imagem ======= */
 .kitty-img {
-    width: 180px;
+    width: 35%; /* menor para caber junto com a carta */
     height: auto;
     border-radius: 16px;
-    margin-bottom: 24px;
-    border: 3px solid #e75480;
     background: #fff;
+    box-shadow: 0 4px 16px rgba(63, 63, 63, 0.2);
+    margin: 0; /* remove margens extras */
 }
+/* ======= Mensagem ======= */
+
 
 .mensagem p {
     color: #d6336c;
-    font-size: 1.2em;
-    margin: 10px 0;
+    font-size: clamp(1em, 2vw, 2.2em); /* tamanho ajustável à tela */
+    margin: 5px 0;
 }
 
-@media (max-width){
-body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #ffe6f2 0%, #fff 100%);
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive, Arial, sans-serif;
-    min-height: 100vh;
+/* ======= Carta ======= */
+.carta-container {
+    position: relative;
+    width: 35%;
+    aspect-ratio: 4 / 3; /* mantém proporção sem altura fixa */
+    cursor: pointer;
+    margin-top: 0;
 }
 
-.container {
-    max-width: 400px;
-    margin: 40px auto;
-    background: #fff0fa;
-    border-radius: 20px;
-    box-shadow: 0 4px 16px rgba(255, 182, 193, 0.2);
-    padding: 32px 20px;
+
+.carta {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #f790af;
+}
+
+/* Envelope */
+.carta::before {
+    content: "";
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ffe6f2, #ffccd9);
+    clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 100%, 0 100%);
+    z-index: 2;
+    transition: transform 0.8s ease;
+}
+
+/* Papel */
+.papel {
+    position: absolute;
+    width: 100%;
+    height: 120%;
+    background: #fff0f6;
+    top: 100%;
+    left: 0;
+    padding: 20px;
+    box-sizing: border-box;
     text-align: center;
-}
-
-h1 {
-    color: #e75480;
-    font-size: 2.2em;
-    margin-bottom: 20px;
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
-}
-
-.kitty-img {
-    width: 180px;
-    height: auto;
-    border-radius: 16px;
-    margin-bottom: 24px;
-    border: 3px solid #e75480;
-    background: #fff;
-}
-
-.mensagem p {
+    font-family: 'Comic Sans MS', cursive;
     color: #d6336c;
     font-size: 1.2em;
-    margin: 10px 0;
+    line-height: 1.4em;
+    transition: top 0.8s ease;
+    z-index: 1;
+    border-top: 3px solid #e75480;
 }
+
+/* Estado aberto */
+.aberta .papel {
+    top: 0;
+}
+
+.aberta .carta::before {
+    transform: translateY(-100%);
+}
+
+/* Laço no topo */
+.laco {
+    width: 100px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+/* Hello Kitty no canto */
+.kitty-canto {
+    width: 120px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 10;
+}
+
+/* Balões subindo */
+.balao {
+    width: 40px;
+    height: 50px;
+    border-radius: 50% 50% 45% 45%;
+    position: absolute;
+    bottom: -60px;
+    animation: subir 5s linear infinite; /* velocidade aumentada */
+    z-index: 0;
+}
+
+.balao::after {
+    content: "";
+    width: 2px;
+    height: 20px;
+    background: #555;
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.rosa { background: #ffb6c1; left: 20%; animation-delay: 0s; }
+.branco { background: #fff; left: 50%; animation-delay: 2s; }
+.lilas { background: #d8b4f8; left: 80%; animation-delay: 4s; }
+
+@keyframes subir {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-110vh) scale(1.1); opacity: 0; }
+}
+
+
+/* ======= Responsivo ======= */
+@media (max-width: 900px) {
+    .container {
+        width: 100vw;
+        height: auto;
+        padding: 24px 8px;
+    }
+    .block {
+        flex-direction: column;
+        padding: 2%;
+    }
+    .kitty-img {
+        width: 60vw;
+        max-width: 300px;
+    }
+    .carta-container {
+        width: 60vw;
+        max-width: 320px;
+        aspect-ratio: 4 / 3;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        max-width: 100vw;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 16px 4px;
+    }
+    h1 {
+        font-size: 2.6em;
+        flex-wrap: wrap;
+    }
+    h2 {
+        font-size: 1.2em;
+    }
+    .kitty-img {
+        width: 90vw;
+        max-width: 180px;
+        margin-bottom: 16px;
+    }
+    .mensagem p {
+        font-size: 1em;
+    }
+    .carta-container {
+        width: 90vw;
+        max-width: 200px;
+        height: 150px;
+    }
+    .papel {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+    .laco {
+        width: 60px;
+        top: 8px;
+        left: 8px;
+    }
+    .kitty-canto {
+        width: 80px;
+        bottom: 4px;
+        right: 4px;
+    }
 }
