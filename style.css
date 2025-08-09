@@ -43,13 +43,49 @@ h2 {
 }
 
 /* ======= Imagem ======= */
-.kitty-img {
-    width: 35%; /* menor para caber junto com a carta */
+/* Carrossel de imagens */
+.carousel {
+    position: relative;
+    width: 35%;
     height: auto;
-    border-radius: 16px;
-    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0 20px 0 0;
+}
+
+.carousel-img {
+    display: none;
+    width: 100%;
+    max-height: 1200px; 
+   border-radius: 16px;
     box-shadow: 0 4px 16px rgba(63, 63, 63, 0.2);
-    margin: 0; /* remove margens extras */
+    background: #fff;
+    transition: opacity 0.8s ease;
+    pointer-events: none;
+}
+
+.carousel-img.active {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
+}
+
+.carousel-btn {
+  display: none;
+}
+
+.carousel-btn:hover {
+    opacity: 1;
+}
+
+.carousel-btn.prev {
+    left: 10px;
+}
+.carousel-btn.next {
+    right: 10px;
 }
 /* ======= Mensagem ======= */
 
@@ -99,7 +135,7 @@ h2 {
 .papel {
     position: absolute;
     width: 100%;
-    max-height: 100%; /* altura máxima adaptável */
+    height: 100%; /* altura máxima adaptável */
     background: #fff0f6;
     top: 100%;
     left: 0;
@@ -186,15 +222,14 @@ h2 {
     .container {
         width: 100vw;
         height: auto;
-        padding: 24px 8px;
     }
     .block {
         flex-direction: column;
-        padding: 2%;
     }
     .kitty-img {
-        width: 60vw;
-        max-width: 300px;
+        width: 80%;
+        height: auto;
+        margin-bottom: 20px;
     }
     .carta-container {
         width: 60vw;
@@ -209,7 +244,6 @@ h2 {
         margin: 0;
         border-radius: 0;
         box-shadow: none;
-        padding: 16px 4px;
     }
     h1 {
         font-size: 2.6em;
@@ -219,17 +253,13 @@ h2 {
     h2 {
         font-size: 1.2em;
     }
-    .kitty-img {
-        width: 90vw;
-        max-width: 180px;
-        margin-bottom: 16px;
-    }
+    
     .mensagem p {
         font-size: 1em;
     }
     .carta-container {
         width: 90vw;
-        height: 200px;
+        height: 250px;
     }
     .papel {
         font-size: 0.9em;
@@ -244,5 +274,17 @@ h2 {
         width: 80px;
         bottom: 4px;
         right: 4px;
+    }
+        .carousel {
+        width: 60vw;
+        max-width: 98vw;
+        height: auto;
+        border-radius: 20px;
+        max-height: 400px;
+        margin-bottom: 20px;
+    }
+    .carousel-img {
+        height: 100%;
+        object-fit: cover;
     }
 }

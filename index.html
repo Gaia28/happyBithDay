@@ -9,25 +9,38 @@
 </head>
 
 <body>
+    <audio src="assets/07 Eu Amo Você.mp3" autoplay></audio>
     <main class="container">
-        <h1>🎀 Feliz Aniversário, minha gatinha! 🎀</h1>
+        <h1> Feliz Aniversário, minha gatinha! </h1>
         <div class="block">
-            <img src="assets/Imagem do WhatsApp de 2025-08-06 à(s) 21.54.50_1e89f7d1.jpg" alt="Hello Kitty"
-                class="kitty-img">
+
+            <div class="carousel">
+    <img src="assets/Imagem do WhatsApp de 2025-08-06 à(s) 21.54.50_1e89f7d1.jpg" class="carousel-img active" alt="Hello Kitty 1">
+    <img src="assets/20240501_121546.jpg" class="carousel-img" alt="Hello Kitty 2">
+    <img src="assets/IMG_20250329_194522870.jpg" class="carousel-img" alt="Hello Kitty 3">
+    <button class="carousel-btn prev">&#10094;</button>
+    <button class="carousel-btn next">&#10095;</button>
+</div>
+                
             <div class="carta-container" id="carta">
                 <div class="carta">
                     <div class="carta-front">
                         <h2>Clique aqui</h2>
                         <div class="papel">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit ab ratione culpa dolores, dolore eveniet aperiam, quod fuga incidunt saepe ad laudantium. Aperiam animi possimus temporibus, suscipit perferendis laborum cupiditate!
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, debitis velit voluptate cupiditate itaque soluta quod. Minus consequuntur numquam adipisci ipsa facilis est architecto aspernatur enim voluptates, delectus molestiae incidunt?
+                           Oi, meu amor! Eu queria lhe desejar um Feliz Aniversário cheio de amor, alegria e momentos inesquecíveis. Mas, acima de tudo, quero dizer que eu amo muito Você. Você é a pessoa mais especial da minha vida, e eu sou muito grato por ter você ao meu lado. 19/08, o dia em que você nasceu e o dia que se tornaria muito especial para mim. Meu amorzinho tá crescendo e fico muito feliz ao perceber o quanto você cresceu e evoluiu como pessoa. Você se tornou mais responsável, mais madura e confiante. E mesmo crescendo, você continua sendo minha princesinha e merece tudo de bom que a vida possa lhe ofeerecer.
+                           Peço perdão por todas as vezes que eu errei com você, por todas as vezes que eu não fui o namorado que você merecia. Eu prometo que vou me esforçar cada vez mais para ser o melhor para você, para te fazer feliz e para construir um futuro juntos.
+                           Queria ter presenteado você com algo especial, mas saiba que este singelo presente foi feito com muito amor e carinho, de coração.
+                           Eu amo muito você, meu amor! Quero que você continue crescendo e evoluindo e mostre ao mundo a pessoa incrível que você é. Feliz Aniversário, meu amor! Que este dia seja tão especial quanto você é para mim. <br><br>
+                            Com todo amor, <br>
+                            o seu gatinho. 🐱💖
                         </div>
                     </div>
                 </div>
             </div>
-
+        </div>
+        
             <img src="assets/Desenho_De_Animais_Coloridos-removebg-preview.png" alt="Hello Kitty" class="kitty-canto">
-
+                
             <!-- Balões -->
             <div class="balao rosa"></div>
 <div class="balao branco"></div>
@@ -42,11 +55,48 @@
     </main>
 
     <script>
-
         const carta = document.getElementById('carta');
         carta.addEventListener('click', () => {
             carta.classList.toggle('aberta');
         });
+
+     const imgs = document.querySelectorAll('.carousel-img');
+    const prevBtn = document.querySelector('.carousel-btn.prev');
+    const nextBtn = document.querySelector('.carousel-btn.next');
+    let current = 0;
+
+    function showImg(idx) {
+    imgs.forEach((img, i) => {
+        if (i === idx) {
+            img.style.transition = "opacity 0.8s";
+            img.style.opacity = "1";
+            img.classList.add('active');
+        } else {
+            img.style.transition = "opacity 0.8s";
+            img.style.opacity = "0";
+            img.classList.remove('active');
+        }
+    });
+}
+
+    prevBtn.addEventListener('click', () => {
+        current = (current - 1 + imgs.length) % imgs.length;
+        showImg(current);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        current = (current + 1) % imgs.length;
+        showImg(current);
+    });
+
+    // Troca automática a cada 3 segundos
+    setInterval(() => {
+        current = (current + 1) % imgs.length;
+        showImg(current);
+    }, 4000);
+
+    showImg(current);
+
 
     </script>
 
