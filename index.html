@@ -1,105 +1,51 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feliz Aniversário - Hello Kitty</title>
+    <title>Bem-vindo!</title>
     <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <audio src="assets/07 Eu Amo Você.mp3" autoplay></audio>
-    <main class="container">
-        <h1> Feliz Aniversário, minha gatinha! </h1>
-        <div class="block">
-
-            <div class="carousel">
-    <img src="assets/Imagem do WhatsApp de 2025-08-06 à(s) 21.54.50_1e89f7d1.jpg" class="carousel-img active" alt="Hello Kitty 1">
-    <img src="assets/20240501_121546.jpg" class="carousel-img" alt="Hello Kitty 2">
-    <img src="assets/IMG_20250329_194522870.jpg" class="carousel-img" alt="Hello Kitty 3">
-    <button class="carousel-btn prev">&#10094;</button>
-    <button class="carousel-btn next">&#10095;</button>
-</div>
-                
-            <div class="carta-container" id="carta">
-                <div class="carta">
-                    <div class="carta-front">
-                        <h2>Clique aqui</h2>
-                        <div class="papel">
-                           Oi, meu amor! Eu queria lhe desejar um Feliz Aniversário cheio de amor, alegria e momentos inesquecíveis. Mas, acima de tudo, quero dizer que eu amo muito Você. Você é a pessoa mais especial da minha vida, e eu sou muito grato por ter você ao meu lado. 19/08, o dia em que você nasceu e o dia que se tornaria muito especial para mim. Meu amorzinho tá crescendo e fico muito feliz ao perceber o quanto você cresceu e evoluiu como pessoa. Você se tornou mais responsável, mais madura e confiante. E mesmo crescendo, você continua sendo minha princesinha e merece tudo de bom que a vida possa lhe ofeerecer.
-                           Peço perdão por todas as vezes que eu errei com você, por todas as vezes que eu não fui o namorado que você merecia. Eu prometo que vou me esforçar cada vez mais para ser o melhor para você, para te fazer feliz e para construir um futuro juntos.
-                           Queria ter presenteado você com algo especial, mas saiba que este singelo presente foi feito com muito amor e carinho, de coração.
-                           Eu amo muito você, meu amor! Quero que você continue crescendo e evoluindo e mostre ao mundo a pessoa incrível que você é. Feliz Aniversário, meu amor! Que este dia seja tão especial quanto você é para mim. <br><br>
-                            Com todo amor, <br>
-                            o seu gatinho. 🐱💖
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-            <img src="assets/Desenho_De_Animais_Coloridos-removebg-preview.png" alt="Hello Kitty" class="kitty-canto">
-                
-            <!-- Balões -->
-            <div class="balao rosa"></div>
-<div class="balao branco"></div>
-<div class="balao lilas"></div>
-<div class="balao rosa" style="left:10%;animation-delay:1s;"></div>
-<div class="balao branco" style="left:35%;animation-delay:2.5s;"></div>
-<div class="balao lilas" style="left:65%;animation-delay:3.5s;"></div>
-<div class="balao rosa" style="left:85%;animation-delay:5s;"></div>
-
-
-
-    </main>
-
-    <script>
-        const carta = document.getElementById('carta');
-        carta.addEventListener('click', () => {
-            carta.classList.toggle('aberta');
-        });
-
-     const imgs = document.querySelectorAll('.carousel-img');
-    const prevBtn = document.querySelector('.carousel-btn.prev');
-    const nextBtn = document.querySelector('.carousel-btn.next');
-    let current = 0;
-
-    function showImg(idx) {
-    imgs.forEach((img, i) => {
-        if (i === idx) {
-            img.style.transition = "opacity 0.8s";
-            img.style.opacity = "1";
-            img.classList.add('active');
-        } else {
-            img.style.transition = "opacity 0.8s";
-            img.style.opacity = "0";
-            img.classList.remove('active');
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #fff0f6;
         }
-    });
-}
-
-    prevBtn.addEventListener('click', () => {
-        current = (current - 1 + imgs.length) % imgs.length;
-        showImg(current);
-    });
-
-    nextBtn.addEventListener('click', () => {
-        current = (current + 1) % imgs.length;
-        showImg(current);
-    });
-
-    // Troca automática a cada 3 segundos
-    setInterval(() => {
-        current = (current + 1) % imgs.length;
-        showImg(current);
-    }, 4000);
-
-    showImg(current);
-
-
-    </script>
-
+        .welcome-box {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(63,63,63,0.15);
+            padding: 40px 32px;
+            text-align: center;
+        }
+        .welcome-box h1 {
+            color: #e75480;
+            font-family: 'Comic Sans MS', cursive;
+            font-size: 2.4em;
+            margin-bottom: 24px;
+        }
+        .welcome-btn {
+            background: #e75480;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 16px 32px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .welcome-btn:hover {
+            background: #d6336c;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-box">
+        <h1>Bem-vindo ao site!</h1>
+        <button class="welcome-btn" onclick="window.location.href='principal.html'">Entrar</button>
+    </div>
 </body>
-
 </html>
